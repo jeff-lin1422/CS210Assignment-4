@@ -11,7 +11,7 @@ select artist as artist_name from song
 where album = '' and artist in (select distinct artist from song where album <> '')
 
 3.
-select album_title, artist, avg(album_rating)
+select album_title as album_name, avg(album_rating) as average_user_rating
 from album_rating
 where year(album_rat_date) > 1990 and year(album_rat_date) < 1996
 group by album_title, artist
