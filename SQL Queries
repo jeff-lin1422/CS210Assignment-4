@@ -7,8 +7,8 @@ group by genre
 order by count(genre) desc limit 3
 
 2.
-select artist as artist_name from song
-where album = '' and artist in (select distinct artist from song where album <> '')
+select distinct artist as artist_name from song
+where album_title = "" and artist in (select distinct artist from album)
 
 3.
 select album_title as album_name, avg(album_rating) as average_user_rating
