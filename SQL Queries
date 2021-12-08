@@ -17,19 +17,19 @@ where year(album_rat_date) > 1990 and year(album_rat_date) < 1996
 group by album_title, artist
 order by album_title asc limit 10
 
-#4)
-SELECT genre AS "genre_name", COUNT(genre) AS "number of song ratings" FROM cs210.song_rating sr 
-	JOIN cs210.song s ON sr.song_title = s.song_title AND sr.artist = s.artist
-    WHERE year(s.release_date) >= 2014 and year(s.release_date) <= 2022 GROUP BY genre
+4.
+SELECT genre AS "genre_name", COUNT(genre) AS "number_of_song_ratings" FROM song_rating sr 
+	JOIN song s ON sr.song_title = s.song_title AND sr.artist = s.artist
+    WHERE year(s.release_date) >= 1991 and year(s.release_date) <= 1995 GROUP BY genre
     ORDER BY COUNT(genre) DESC LIMIT 3; 
 
-#5)
-SELECT pl.user_name AS "username", pl.playlist_title, AVG(song_rating) AS 'average song rating' FROM cs210.playlist pl 
-JOIN cs210.song_rating sr ON pl.user_name=sr.user_name
+5.
+SELECT pl.user_name AS "username", pl.playlist_title, AVG(song_rating) AS 'average_song_rating' FROM playlist pl 
+JOIN song_rating sr ON pl.user_name=sr.user_name
 AND pl.song_title = sr.song_title AND pl.artist = sr.artist GROUP BY playlist_title
 HAVING AVG(song_rating) >= 4.0;
 
-#6)
+6.
 # we dont care about individual ratings of song or album, so as long as a user rated something
 # the union of the two tables will have all the ratings of users
 # the result will have two jeff_lin because one of them contains space
