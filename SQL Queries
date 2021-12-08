@@ -1,0 +1,20 @@
+SQL Queries
+
+1. 
+select genre, count(genre) as 'number_of_songs'
+from song
+group by genre
+order by count(genre) desc limit 3
+
+2.
+select artist as artist_name from song
+where album = '' and artist in (select distinct artist from song where album <> '')
+
+3.
+select album_title, artist, avg(album_rating)
+from album_rating
+where year(album_rat_date) > 1990 and year(album_rat_date) < 1996
+group by album_title, artist
+order by album_title asc limit 10
+
+4.
